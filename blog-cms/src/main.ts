@@ -1,6 +1,7 @@
 import {createApp} from 'vue'
 import {createPinia} from 'pinia'
-
+// 引入全局样式
+import '@/assets/styles/index.scss'
 import App from './App.vue'
 // 引入路由
 import router from '@/router'
