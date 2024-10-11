@@ -42,12 +42,15 @@ import {User, Lock} from '@element-plus/icons-vue';
 import {reactive, ref} from 'vue';
 import {login} from "@/api/user";
 import {useRouter} from "vue-router";
-
+import useUserStore from "@/stores/user";
+import {myElNoteMessage} from "@/utils/myMessage";
+// 引入用户状态管理
+const userStore = useUserStore();
 const router = useRouter();
 // 定义登录表单
 const loginForm = reactive({
-  username: '',
-  password: ''
+  username: 'admin',
+  password: '123456'
 });
 // 定义登录按钮状态
 const loading = ref(false);
@@ -74,14 +77,9 @@ const handleLogin = () => {
     // 发送登录请求
     login(loginForm).then(res => {
       // 登录提示信息
-      ElNotification({
-        title: '登录成功',
-        message: res.msg,
-        type: 'success',
-      });
+      myElNoteMessage('登录成功', res.msg);
       // 存储token和用户信息到本地
-      window.localStorage.setItem('token', res.data.token)
-      window.localStorage.setItem('user', JSON.stringify(res.data.user))
+      userStore.setUserAndToken(res.data.user, res.data.token)
       router.push('/')
     }).finally(() => {
       // 隐藏登录按钮加载状态
