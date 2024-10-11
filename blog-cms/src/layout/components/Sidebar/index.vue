@@ -8,11 +8,12 @@
 import useSettingStore from "@/stores/settings";
 import Logo from "./Logo.vue"
 import useAppStore from "@/stores/app";
+import {computed} from "vue";
 
 const appStore = useAppStore();
 const Settings = useSettingStore();
 const showLogo = Settings.sidebarLogo;
-const isCollapse = !appStore.sidebar.opened;
+const isCollapse = computed(() => !appStore.sidebar.opened);
 </script>
 
 <style scoped lang="scss">

@@ -12,6 +12,10 @@ const useAppStore = defineStore("useAppStore", {
         closeSideBar(withoutAnimation: boolean) {
             this.sidebar.opened = false;
             this.sidebar.withoutAnimation = withoutAnimation;
+        },
+        changeSideBar() {
+            this.sidebar.opened = !this.sidebar.opened
+            this.sidebar.withoutAnimation = false
         }
     },
     getters: {}
