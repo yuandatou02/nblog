@@ -2,6 +2,8 @@
   <div class="navbar">
     <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar"/>
 
+    <breadcrumb class="breadcrumb-container"/>
+
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -31,6 +33,7 @@
 
 <script setup lang="ts">
 import Hamburger from '@/components/Hamburger/index.vue'
+import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import {computed} from "vue";
 import useStore from "@/stores";
 import {ArrowDown} from "@element-plus/icons-vue";
