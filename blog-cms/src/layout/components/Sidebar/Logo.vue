@@ -14,9 +14,9 @@
 </template>
 
 <script setup lang="ts">
-import useSettingStore from "@/stores/settings";
+import useStore from "@/stores";
 
-const settings = useSettingStore();
+const {settings} = useStore();
 defineProps({
   collapse: {
     type: Boolean,
@@ -51,8 +51,6 @@ const title = settings.title;
     width: 100%;
 
     & .sidebar-logo {
-      position: absolute;
-      top: 20%;
       width: 32px;
       height: 32px;
       vertical-align: middle;
@@ -61,7 +59,7 @@ const title = settings.title;
 
     & .sidebar-title {
       display: inline-block;
-      margin-left: 20px;
+      margin: 0;
       color: #fff;
       font-weight: 600;
       line-height: 50px;

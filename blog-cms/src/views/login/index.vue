@@ -42,7 +42,7 @@ import {User, Lock} from '@element-plus/icons-vue';
 import {reactive, ref} from 'vue';
 import {login} from "@/api/user";
 import {useRouter} from "vue-router";
-import useUserStore from "@/stores/user";
+import useUserStore from "@/stores/modules/user";
 import {myElNoteMessage} from "@/utils/myMessage";
 // 引入用户状态管理
 const userStore = useUserStore();

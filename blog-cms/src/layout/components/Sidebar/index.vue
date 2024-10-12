@@ -5,9 +5,9 @@
 </template>
 
 <script setup lang="ts">
-import useSettingStore from "@/stores/settings";
+import useSettingStore from "@/stores/modules/settings";
 import Logo from "./Logo.vue"
-import useAppStore from "@/stores/app";
+import useAppStore from "@/stores/modules/app";
 import {computed} from "vue";
 
 const appStore = useAppStore();

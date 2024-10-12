@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import useAppStore from "@/stores/app";
+import useAppStore from "@/stores/modules/app";
 import Hamburger from '@/components/Hamburger/index.vue'
 import {computed} from "vue";
 

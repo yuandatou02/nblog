@@ -11,26 +11,24 @@
 </template>
 
 <script setup lang="ts">
-import useAppStore from "@/stores/app";
 import Sidebar from "./components/Sidebar/index.vue";
 import Navbar from "@/layout/components/Navbar.vue";
-import useSettingStore from "@/stores/settings";
+import useStore from "@/stores";
 import {computed} from "vue";
 
-const settingStore = useSettingStore();
-const appStore = useAppStore();
-const device = appStore.device;
-const sidebar = appStore.sidebar;
-const fixedHeader = settingStore.fixedHeader;
+const {app, settings} = useStore();
+const device = app.device;
+const sidebar = app.sidebar;
+const fixedHeader = settings.fixedHeader;
 // 点击侧边栏外面关闭侧边栏
 const handleClickOutside = () => {
-  appStore.closeSideBar(false);
+  app.closeSideBar(false);
 }
 const classObj = computed(() => ({
-  hideSidebar: !appStore.sidebar.opened,
-  openSidebar: appStore.sidebar.opened,
-  withoutAnimation: appStore.sidebar.withoutAnimation,
-  mobile: appStore.device === 'mobile'
+  hideSidebar: !app.sidebar.opened,
+  openSidebar: app.sidebar.opened,
+  withoutAnimation: app.sidebar.withoutAnimation,
+  mobile: app.device === 'mobile'
 }))
 </script>
 
