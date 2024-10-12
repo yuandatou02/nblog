@@ -1,3 +1,4 @@
+import '@unocss/reset/eric-meyer.css'
 import {createApp} from 'vue'
 import {createPinia} from 'pinia'
 // 引入全局样式
@@ -10,7 +11,7 @@ const app = createApp(App)
 // 引入unoCss
 import 'virtual:uno.css'
 // 引入样式重置
-import '@unocss/reset/tailwind.css'
+// import '@unocss/reset/tailwind.css'
 // 引入pinia持久化插件
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 // 注册pinia
