@@ -6,13 +6,15 @@
       <div :class="{'fixed-header':fixedHeader}">
         <navbar/>
       </div>
+      <app-main/>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import Sidebar from "./components/Sidebar/index.vue";
-import Navbar from "@/layout/components/Navbar.vue";
+import Navbar from "@/layout/components/Navbar/index.vue";
+import AppMain from "@/layout/components/AppMain/index.vue";
 import useStore from "@/stores";
 import {computed} from "vue";
 

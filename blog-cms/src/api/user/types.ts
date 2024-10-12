@@ -17,5 +17,4 @@ export interface LoginForm {
  */
 export interface UserInfo {
     user: object;
-    token: string
 }

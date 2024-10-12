@@ -7,6 +7,9 @@ import '@/assets/styles/index.scss'
 import App from './App.vue'
 // 引入路由
 import router from '@/router'
+// 引入svg组件
+import SvgIcon from "@/components/SvgIcon/index.vue";
+import "virtual:svg-icons-register";
 
 const app = createApp(App)
 // 引入unoCss
@@ -22,5 +25,6 @@ pinia.use(piniaPluginPersistedstate)
 app.use(pinia)
 // 注册路由
 app.use(router)
-
+// 注册svg组件
+app.component("svg-icon", SvgIcon);
 app.mount('#app')

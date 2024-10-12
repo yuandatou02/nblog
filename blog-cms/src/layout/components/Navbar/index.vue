@@ -1,18 +1,63 @@
 <template>
   <div class="navbar">
     <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar"/>
+
+    <div class="right-menu">
+      <el-dropdown class="avatar-container" trigger="click">
+        <div class="avatar-wrapper">
+          <img :src="users.avatar" class="user-avatar" alt="Avatar">
+          <el-icon class="el-icon--right">
+            <arrow-down/>
+          </el-icon>
+        </div>
+        <template #dropdown>
+          <el-dropdown-menu class="user-dropdown">
+            <a target="_blank" href="https://github.com/Naccl/NBlog">
+              <el-dropdown-item>
+                <SvgIcon icon-class="github" class-name="svg"/>
+                <span class="ml-6px">GitHub</span>
+              </el-dropdown-item>
+            </a>
+            <el-dropdown-item @click.native="handleLogout">
+              <SvgIcon icon-class="logout" class-name="svg"/>
+              <span class="ml-6px">退出</span>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import useAppStore from "@/stores/modules/app";
 import Hamburger from '@/components/Hamburger/index.vue'
 import {computed} from "vue";
+import useStore from "@/stores";
+import {ArrowDown} from "@element-plus/icons-vue";
+import {myElMessageBox, myElNoteMessage} from "@/utils/myMessage";
+import {logout} from "@/api/user";
+import {removeToken} from "@/utils/token";
+import {useRouter} from "vue-router";
 
-const appStore = useAppStore();
-const sidebar = computed(() => appStore.sidebar);
+const router = useRouter();
+const {app, user} = useStore();
+const users = user.user;
+const sidebar = computed(() => app.sidebar);
 const toggleSideBar = () => {
-  appStore.changeSideBar();
+  app.changeSideBar();
+}
+const handleLogout = () => {
+  myElMessageBox('确定退出登录吗？', 'warning').then(() => {
+    logout().then(() => {
+      // 退出登录后清空用户信息
+      app.$reset();
+      // 清除token
+      removeToken();
+      // 跳转到登录页面
+      router.push('/login');
+      myElNoteMessage("系统提示", '退出登录成功');
+    })
+  })
 }
 </script>
 

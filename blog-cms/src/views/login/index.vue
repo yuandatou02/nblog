@@ -44,6 +44,7 @@ import {login} from "@/api/user";
 import {useRouter} from "vue-router";
 import useUserStore from "@/stores/modules/user";
 import {myElNoteMessage} from "@/utils/myMessage";
+import {setToken} from "@/utils/token";
 // 引入用户状态管理
 const userStore = useUserStore();
 const router = useRouter();
@@ -79,7 +80,8 @@ const handleLogin = () => {
       // 登录提示信息
       myElNoteMessage('登录成功', res.msg);
       // 存储token和用户信息到本地
-      userStore.setUserAndToken(res.data.user, res.data.token)
+      userStore.setUser(res.data.user)
+      setToken(res.data.token)
       router.push('/')
     }).finally(() => {
       // 隐藏登录按钮加载状态

@@ -9,6 +9,7 @@ import com.huang.model.dto.response.LoginResp;
 import com.huang.service.UserService;
 import com.huang.utils.UserToUserResponseMapper;
 import jakarta.annotation.Resource;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +31,12 @@ public class UserController {
 
     @Resource
     private UserToUserResponseMapper toMapper;
+
+    @GetMapping("/logout")
+    public Result logout() {
+        StpUtil.logout();
+        return Result.success("退出成功");
+    }
 
     /**
      * 登录成功后，签发博主身份Token

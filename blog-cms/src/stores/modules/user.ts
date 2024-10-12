@@ -4,17 +4,14 @@ import type {UserInfo} from "@/api/user/types";
 const useUserStore = defineStore("useUserStore", {
     state: (): UserInfo => ({
         user: {},
-        token: "",
     }),
     actions: {
-        setUserAndToken(user: any, token: string) {
+        setUser(user: any) {
             this.user = user;
-            this.token = token;
         }
     },
     getters: {},
     persist: {
-        enabled: true,
         storage: sessionStorage
     }
 });
