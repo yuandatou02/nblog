@@ -10,7 +10,7 @@ import type {Result} from "@/model";
  */
 export function addFriend(data: FriendForm): AxiosPromise<Result<string>> {
     return Request({
-        url: 'friend',
+        url: '/friend',
         method: 'POST',
         data
     })

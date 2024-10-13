@@ -58,7 +58,7 @@
         <el-input v-model="addForm.avatar"></el-input>
       </el-form-item>
       <el-form-item label="是否公开" prop="published">
-        <el-switch v-model="addForm.published"></el-switch>
+        <el-switch v-model="addForm.isPublished"></el-switch>
       </el-form-item>
     </el-form>
     <!--底部-->
@@ -81,7 +81,7 @@ const addForm = reactive({
   description: '',
   website: '',
   avatar: '',
-  published: true
+  isPublished: true
 });
 const addDialogClosed = () => {
   addFormRef.value.resetFields();
