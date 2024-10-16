@@ -11,3 +11,23 @@ export interface Result<T> {
     msg: string;
     data: T;
 }
+
+/**
+ * 分页参数
+ * @property {number} current 当前页码
+ * @property {number} size 每页记录数
+ */
+export interface PageQuery {
+    current: number;
+    size: number;
+}
+
+/**
+ * 分页返回接口
+ * @property {<T>} recordList 记录列表
+ * @property {number} count 总记录数
+ */
+export interface PageResult<T> {
+    recordList: T;
+    count: number;
+}

@@ -1,6 +1,5 @@
 package com.huang.controller;
 
-import cn.dev33.satoken.secure.SaSecureUtil;
 import cn.dev33.satoken.stp.StpUtil;
 import com.huang.entity.User;
 import com.huang.model.Result;
@@ -33,7 +32,7 @@ public class UserController {
     private UserToUserResponseMapper toMapper;
 
     @GetMapping("/logout")
-    public Result logout() {
+    public Result<String> logout() {
         StpUtil.logout();
         return Result.success("退出成功");
     }
@@ -45,7 +44,7 @@ public class UserController {
      * @return Token
      */
     @PostMapping("/login")
-    public Result login(@RequestBody LoginReq loginReq) {
+    public Result<Map<String, Object>> login(@RequestBody LoginReq loginReq) {
         User loginUser = userService.login(loginReq);
         if (!"ROLE_admin".equals(loginUser.getRole())) {
             return Result.create(403, "无权限");
